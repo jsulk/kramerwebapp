@@ -25,16 +25,23 @@ class Post extends Component {
     }
 
     render() {
+
+        var picUrl = '';
+        if(this.props.post.preview){
+            var image = this.props.post.preview.images[0].source.url;
+            picUrl = image.replace('amp;s', 's');
+        }
+
         return (
             //Populate Card with post info
             //Check the type of post and only set the image if it contains one
             <Card>
-                {this.props.post.thumbnail === "self" || this.props.post.thumbnail === "default" || this.props.post.thumbnail === "nsfw" || this.props.post.thumbnail === "spoiler" ?
-                    <div></div>
-                    :
+                {this.props.post.preview ?
                     <div className="image">
-                        <img src={this.props.post.thumbnail} alt="Missing thumbnail"/>
+                        <img src={picUrl} alt="Missing thumbnail"/>
                     </div>
+                    :
+                    <div></div>
                 }
                 <Card.Content>
                     <Card.Header><a
