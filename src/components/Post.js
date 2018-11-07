@@ -26,6 +26,7 @@ class Post extends Component {
 
     render() {
 
+        //Fix encoding for image url
         var picUrl = '';
         if(this.props.post.preview){
             var image = this.props.post.preview.images[0].source.url;
