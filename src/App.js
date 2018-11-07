@@ -24,7 +24,7 @@ class App extends Component {
 
     //fetch post data from reddit api and then update store
     onFetchPosts() {
-        fetch('https://www.reddit.com/r/surfing/hot/.json')
+        fetch('https://www.reddit.com/r/pics/top/.json')
             .then(results => results.json())
             .then(json => {
                 this.props.onFetchPosts(json.data.children);
@@ -67,8 +67,9 @@ class App extends Component {
         }
 
         //styles
+        let headerStyle = {display: 'flex', justifyContent: 'center', paddingTop: '2em'};
         let cardStyle = {display: 'flex', justifyContent: 'center', paddingRight: '1em', paddingLeft: '1em'};
-        let headerStyle = {display: 'flex', justifyContent: 'center', paddingTop: '2em', paddingBottom: '1em'};
+        let detailStyle = {display: 'flex', justifyContent: 'center', paddingTop:'1em', paddingBottom:'1em'};
 
         if (!isLoaded) {
             return <div style={headerStyle}>Loading...</div>
@@ -77,9 +78,10 @@ class App extends Component {
                 <div>
                     <div>
                         <div style={headerStyle}>
-                            <h1 className="ui header">Hot posts from r/surfing</h1>
+                            <h1 className="ui header">Top posts from r/pics</h1>
                         </div>
-                        <div style={headerStyle}>
+                        <p1 style={detailStyle}>(was originally 'r/surfing', but there was questionable content)</p1>
+                        <div style={detailStyle}>
                             <Button active={this.state.allSelected} onClick={this.filterAll}
                                     attached='left'>All</Button>
                             <Button active={!this.state.allSelected} onClick={this.filterLiked}
