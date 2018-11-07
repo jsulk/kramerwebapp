@@ -29,7 +29,7 @@ class Post extends Component {
             //Populate Card with post info
             //Check the type of post and only set the image if it contains one
             <Card>
-                {this.props.post.thumbnail === "self" || this.props.post.thumbnail === "default" ?
+                {this.props.post.thumbnail === "self" || this.props.post.thumbnail === "default" || this.props.post.thumbnail === "nsfw" || this.props.post.thumbnail === "spoiler" ?
                     <div></div>
                     :
                     <div className="image">
